@@ -36,13 +36,20 @@ def get_page_data(html):
         str = soup.find('div', class_='panel-body').text.split('\n')
     except:
         str = ''
+    try:
+        str1 = soup.find('div', class_='nodeRank').text.split('\n')
+    except:
+        str1 = ''
 
     price_BTC = str[4]
     price_dollar = str[8][:-2].replace(' ', '')
     channel_count = str[50]
+    capacity_rank = str1[3]
+    channel_rank = str1[5]
+    age_rank = str1[7]
 
 
-    data = [name, price_BTC, price_dollar, channel_count]
+    data = [name, price_BTC, price_dollar, channel_count, capacity_rank, channel_rank, age_rank]
     print(data)
     return data
 
@@ -54,7 +61,7 @@ def make_all(link):
 
 def main():
     start = datetime.now()
-    url = 'https://1ml.com/directory/augmented-reality/8b22cd98-7d77-430d-bc9f-d27fdfffc300'
+    url = 'https://1ml.com/directory/groceries/5dcb5793-e2a8-4bb3-8b54-ae0b5c32b14e'
     all_links = get_all_links(get_html(url))
 
     with Pool(10) as p:
