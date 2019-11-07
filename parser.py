@@ -4,11 +4,9 @@ from datetime import datetime
 import requests
 from bs4 import BeautifulSoup
 
-
 def get_html(url):
     response = requests.get(url)
     return response.text
-
 
 def get_all_links(html):
     soup = BeautifulSoup(html, 'lxml')
@@ -20,30 +18,35 @@ def get_all_links(html):
         links.append(link)
     return links
 
-
 def text_before_word(text, word):
     line = text.split(word)[0].strip()
     return line
 
-
 def get_page_data(html):
     soup = BeautifulSoup(html, 'lxml')
     try:
-        str = soup.find('div', class_='panel-body').text.split('\n')
+        name = soup.find('h1').text
     except:
-        str = ''
-
-    price_BTC = str[4]
-    price_dollar = str[8][:-2].replace(' ', '')
-
-    data = {price_BTC, price_dollar}
+        name = ''
+    try:
+        price = soup.find('div', class_='panel-body').text.split('\n')
+    except:
+        price = ''
+    data = {'name': name,
+            'price': price}
     print(data)
     return data
 
+def write_csv(data):
+    with open('coinmarketcap.csv', 'a') as f:
+        writer = csv.writer(f)
+        writer.writerow((data['name'],
+                         data['price']))
 
 def make_all(link):
     html = get_html(link)
     data = get_page_data(html)
+    write_csv(data)
 
 
 def main():
@@ -62,3 +65,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
