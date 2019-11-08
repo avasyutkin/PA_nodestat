@@ -48,7 +48,6 @@ def get_page_data(html):
     channel_rank = str1[5]
     age_rank = str1[7]
 
-
     data = [name, price_BTC, price_dollar, channel_count, capacity_rank, channel_rank, age_rank]
     print(data)
     return data
