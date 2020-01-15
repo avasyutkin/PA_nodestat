@@ -4,24 +4,23 @@ from datetime import datetime
 import requests
 from bs4 import BeautifulSoup
 import pymysql
-'''import pypyodbc
+import pypyodbc
 
-сonnection = pypyodbc.connect('Driver={SQL Server};'
-                              'Server=cb89197_nodestat;'
-                              'Database=cb89197_nodestat;'
-                              'uid=cb89197_nodestat;'
-                              'pwd=6TU6TpJ9;')'''
+сonnection = pypyodbc.connect('Driver={SQL Server}; Server=79.104.5.142; Port=3306; Database=cb89197_nodestat; uid=cb89197_nodestat; pwd=6TU6TpJ9;')
 
 
-connection = pymysql.connect(host='localhost', port='3306', user='cb89197_nodestat', password='6TU6TpJ9', db='cb89197_nodestat')
+
+
+
+'''connection = pymysql.connect(host='79.104.5.142', user='cb89197_nodestat', password='6TU6TpJ9', db='cb89197_nodestat')
 cursorcon = connection.cursor()
 sql = 'SELECT * from `nodes`;'
-cursorcon.execute(sql) 
+cursorcon.execute(sql)
 
 countrow = cursorcon.execute(sql)
 print(countrow)
 data = cursorcon.fetchone()
-print(data)
+print(data)'''
 
 
 
