@@ -3,6 +3,26 @@ import csv
 from datetime import datetime
 import requests
 from bs4 import BeautifulSoup
+import pymysql
+'''import pypyodbc
+
+сonnection = pypyodbc.connect('Driver={SQL Server};'
+                              'Server=cb89197_nodestat;'
+                              'Database=cb89197_nodestat;'
+                              'uid=cb89197_nodestat;'
+                              'pwd=6TU6TpJ9;')'''
+
+
+connection = pymysql.connect(host='localhost', port='3306', user='cb89197_nodestat', password='6TU6TpJ9', db='cb89197_nodestat')
+cursorcon = connection.cursor()
+sql = 'SELECT * from `nodes`;'
+cursorcon.execute(sql) 
+
+countrow = cursorcon.execute(sql)
+print(countrow)
+data = cursorcon.fetchone()
+print(data)
+
 
 
 def get_html(url):
