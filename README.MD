@@ -4,7 +4,7 @@ NodeStat - это удобное представление данных о пл
 
 Сайт проекта: http://node.std-840.ist.mospolytech.ru 
 
-Наш проект: http://nodestat.std-840.ist.mospolytech.ru/test
+Наш проект: http://nodestat.std-840.ist.mospolytech.ru
 
 ## Участники
 
