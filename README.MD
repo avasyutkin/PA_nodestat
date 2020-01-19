@@ -2,7 +2,8 @@
 
 NodeStat - это удобное представление данных о платежных каналах Lightning Network. Графики изменения параметров и ежедневная статистика помогут определиться пользователям, к какому каналу поключиться.
 
-Сайт проекта: http://node.std-840.ist.mospolytech.ru/
+Сайт проекта: http://node.std-840.ist.mospolytech.ru 
+
 Наш проект: http://nodestat.std-840.ist.mospolytech.ru/test
 
 ## Участники
