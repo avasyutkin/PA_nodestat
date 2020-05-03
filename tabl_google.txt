@@ -11,4 +11,9 @@ https://docs.google.com/spreadsheets/d/1JdytfdpiCD1DdIvs4Gd5LhmxGHCl3paoqsoYisq8
 Добавление новой таблицы: contacts // Готово
 Заполнение таблиц: sites, nodes // Готово
 Время: 2 часа
+
+2.
+Заполнение таблицы: contacts // Готово
+Перепроверка сайтов на работоспособность // В планах
+Время: 1 час
 (С) Каваллини
