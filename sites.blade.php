@@ -1,54 +1,134 @@
-<!DOCTYPE html>
-<html lang="en">
+<html><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Responsive Admin Dashboard Template">
+    <meta name="keywords" content="admin,dashboard">
+    <meta name="author" content="stacks">
+    <!-- The above 6 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+            
+    <!-- Title -->
+    <title>concept - Responsive Admin Dashboard Template</title>
+    
+    <!-- Styles -->
+    <link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
 
-<head>
-    <meta charset="UTF-8">
-    <title>Nodestat</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ asset('resources/plugins/switchery/switchery.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('resources/plugins/icomoon/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('resources/plugins/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('resources/plugins/font-awesome/css/all.min.css') }}">
+          
+    <!-- Theme Styles -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('resources/css/style.css') }}">
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
-
-@php ($i = 0)
-
-<body style="background: #212529">
-    <div class="container">
-        <div class="header" style="height: 70px; font-size: 40px; font-weight: 600; color: #fff">
-            <div class="logo">
-                NodeStat
+   
+   @php ($i = 0)
+    <body>
+        
+        <!-- Page Container -->
+        <div class="page-container">
+            <div class="page-sidebar">
             </div>
-        </div>
-        <table class="table table-dark mt-5">
-            <thead>
-                <tr style="font-size: 16px;">
-                    <th scope="col">№</th>
-                    <th scope="col">Site name</th>
-                    <th scope="col">Category</th>
-                    <th scope="col">Capacity</th>
-                    <th scope="col">Channel Count</th>
-                    <th scope="col">Node Rank: Capacity</th>
-                    <th scope="col">Node Rank: Channel</th>
-                    <th scope="col">Node Rank: Age</th>
-                </tr>
-            </thead>
-            <tbody>
-               @foreach ($sites as $site)
-               @if ($site->id != 18 && $site->id != 20)
-               @php ($i++) 
-                <tr>
-                    <th scope="row">{{$i}}</th>
-                    <th>{{$site->name}}</th>
-                    <th>{{$site->category}}</th>
-                    <th>{{$site->node->data->where('date', date('Y-m-d'))->first()->capacity}}</th>
-                    <th>{{$site->node->data->where('date', date('Y-m-d'))->first()->channel_count}}</th>
-                    <th>{{$site->node->data->where('date', date('Y-m-d'))->first()->rank_capacity}}</th>
-                    <th>{{$site->node->data->where('date', date('Y-m-d'))->first()->rank_channel}}</th>
-                    <th>{{$site->node->data->where('date', date('Y-m-d'))->first()->rank_age}}</th>
-                    
-                </tr>
-                @endif
-                @endforeach
-            </tbody>
-        </table>
-    </div>
-</body>
+            <div class="page-content">
+                <div class="secondary-sidebar">
+                    <div class="secondary-sidebar-bar">
+                        <a href="#" class="logo-box">nodestat</a>
+                    </div>
+                    <div class="secondary-sidebar-menu">
+                        <ul class="accordion-menu">
+                            <li>
+                                <a href="index.html">
+                                    <i class="menu-icon icon-home4"></i><span>Dashboard</span>
+                                </a>
+                            </li>
+                            
+                            
+                            
+                            
+                            
+                            
+                            <li>
+                                <a href="javascript:void(0)">
+                                    <i class="menu-icon icon-star"></i><span>f</span><i class="accordion-icon fas fa-angle-left"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="page-inner no-page-title">
+                    <div id="main-wrapper">
 
+
+                        <div class="row">
+                            <div class="col-xl">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Hoverable Rows</h5>
+                                        <p>Add to enable a hover state on table rows within a.</p>
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">№</th>
+                                                    <th scope="col">Site name</th>
+                                                    <th scope="col">Category</th>
+                                                    <th scope="col">Capacity</th>
+                                                    <th scope="col">Channel Count</th>
+                                                    <th scope="col">Node Rank: Capacity</th>
+                                                    <th scope="col">Node Rank: Channel</th>
+                                                    <th scope="col">Node Rank: Age</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                               @foreach ($sites as $site)
+                                                   @if ($site->id != 18 && $site->id != 20)
+                                                       @php ($i++)
+                                                <tr>
+                                                    <th scope="row">{{$i}}</th>
+                                                        <td>{{$site->name}}</td>
+                                                        <td>{{$site->category}}</td>
+                                                        <td>{{$site->node->data->where('date', date('Y-m-d'))->first()->capacity}}</td>
+                                                        <td>{{$site->node->data->where('date', date('Y-m-d'))->first()->channel_count}}</td>
+                                                        <td>{{$site->node->data->where('date', date('Y-m-d'))->first()->rank_capacity}}</td>
+                                                        <td>{{$site->node->data->where('date', date('Y-m-d'))->first()->rank_channel}}</td>
+                                                        <td>{{$site->node->data->where('date', date('Y-m-d'))->first()->rank_age}}</td>
+                                                </tr>
+                                                    @endif
+                                               @endforeach
+                                            </tbody>
+                                        </table>       
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+       
+                       
+                    </div><!-- Main Wrapper -->
+
+                    
+                <div class="page-footer">
+                    <p>2019 &copy; stacks</p>
+                </div>
+                </div><!-- /Page Inner -->
+             
+               
+            </div><!-- /Page Content -->
+        </div><!-- /Page Container -->
+        
+        
+        <!-- Javascripts -->
+        <script src="../../assets/plugins/jquery/jquery-3.1.0.min.js"></script>
+        <script src="../../assets/plugins/bootstrap/popper.min.js"></script>
+        <script src="../../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+        <script src="../../assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+        <script src="../../assets/plugins/switchery/switchery.min.js"></script>
+        <script src="../../assets/js/concept.min.js"></script>
+    </body>
 </html>
