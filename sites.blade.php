@@ -42,37 +42,13 @@
                     <div class="secondary-sidebar-bar">
                         <a href="#" class="logo-box">nodestat</a>
                     </div>
-                    <div class="secondary-sidebar-menu">
-                        <ul class="accordion-menu">
-                            <li>
-                                <a href="index.html">
-                                    <i class="menu-icon icon-home4"></i><span>Dashboard</span>
-                                </a>
-                            </li>
-                            
-                            
-                            
-                            
-                            
-                            
-                            <li>
-                                <a href="javascript:void(0)">
-                                    <i class="menu-icon icon-star"></i><span>f</span><i class="accordion-icon fas fa-angle-left"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
                 </div>
                 <div class="page-inner no-page-title">
                     <div id="main-wrapper">
-
-
                         <div class="row">
                             <div class="col-xl">
-                                <div class="card">
+                                <div class="card" style="background-color: #fff">
                                     <div class="card-body">
-                                        <h5 class="card-title">Hoverable Rows</h5>
-                                        <p>Add to enable a hover state on table rows within a.</p>
                                         <table class="table table-hover">
                                             <thead>
                                                 <tr>
@@ -94,11 +70,7 @@
                                                     <th scope="row">{{$i}}</th>
                                                         <td>{{$site->name}}</td>
                                                         <td>{{$site->category}}</td>
-                                                        <td>{{$site->node->data->where('date', date('Y-m-d'))->first()->capacity}}</td>
-                                                        <td>{{$site->node->data->where('date', date('Y-m-d'))->first()->channel_count}}</td>
-                                                        <td>{{$site->node->data->where('date', date('Y-m-d'))->first()->rank_capacity}}</td>
-                                                        <td>{{$site->node->data->where('date', date('Y-m-d'))->first()->rank_channel}}</td>
-                                                        <td>{{$site->node->data->where('date', date('Y-m-d'))->first()->rank_age}}</td>
+                                                        
                                                 </tr>
                                                     @endif
                                                @endforeach
