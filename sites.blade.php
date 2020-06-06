@@ -1,106 +1,75 @@
-<html><head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Responsive Admin Dashboard Template">
-    <meta name="keywords" content="admin,dashboard">
-    <meta name="author" content="stacks">
-    <!-- The above 6 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-            
-    <!-- Title -->
-    <title>concept - Responsive Admin Dashboard Template</title>
-    
-    <!-- Styles -->
-    <link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
+<!DOCTYPE html>
+<html lang="en">
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('resources/plugins/switchery/switchery.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('resources/plugins/icomoon/style.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('resources/plugins/bootstrap/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('resources/plugins/font-awesome/css/all.min.css') }}">
-          
-    <!-- Theme Styles -->
+<head>
+    <meta charset="UTF-8">
+    <title>Nodestat</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{{ asset('resources/css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
 </head>
-   
-   @php ($i = 0)
-    <body>
-        
-        <!-- Page Container -->
-        <div class="page-container">
-            <div class="page-sidebar">
-            </div>
-            <div class="page-content">
-                <div class="secondary-sidebar">
-                    <div class="secondary-sidebar-bar">
-                        <a href="#" class="logo-box">nodestat</a>
-                    </div>
-                </div>
-                <div class="page-inner no-page-title">
-                    <div id="main-wrapper">
-                        <div class="row">
-                            <div class="col-xl">
-                                <div class="card" style="background-color: #fff">
-                                    <div class="card-body">
-                                        <table class="table table-hover">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">№</th>
-                                                    <th scope="col">Site name</th>
-                                                    <th scope="col">Category</th>
-                                                    <th scope="col">Capacity</th>
-                                                    <th scope="col">Channel Count</th>
-                                                    <th scope="col">Node Rank: Capacity</th>
-                                                    <th scope="col">Node Rank: Channel</th>
-                                                    <th scope="col">Node Rank: Age</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                               @foreach ($sites as $site)
-                                                   @if ($site->id != 18 && $site->id != 20)
-                                                       @php ($i++)
-                                                <tr>
-                                                    <th scope="row">{{$i}}</th>
-                                                        <td>{{$site->name}}</td>
-                                                        <td>{{$site->category}}</td>
-                                                        
-                                                </tr>
-                                                    @endif
-                                               @endforeach
-                                            </tbody>
-                                        </table>       
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-       
-                       
-                    </div><!-- Main Wrapper -->
 
+@php ($i = 0)
+
+<body style="background: #fff">
+   
+   
+   
+   
+   
+   <div class="container block-for-nodestat-main">
+              
+   </div>
+   
+   
+   
+   
+   
+   
+   
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                NodeStat
+            </div>
+        </div>
+        <table class="table table-hover mt-5" style="text-align:center">
+            <thead>
+               <hr class="hr-visible0">
+                <tr style="font-size: 19px;">
+                    <th style="width: 1%" class="head-table">№</th>
+                    <th style="width: 12%; text-align:left" class="head-table">Site name</th>
+                    <th style="width: 14%" class="head-table">Capacity</th>
+                    <th style="width: 14%" class="head-table no-wrap-in-table">Channel Count</th>
+                    <th style="width: 11%" class="head-table">Rank: Capacity</th>
+                    <th style="width: 11%" class="head-table">Rank: Channel</th>
+                    <th style="width: 11%" class="head-table">Rank: Age</th>
+                </tr>
+            </thead>
+              <tbody>
+               @foreach ($sites as $site)
+               @php ($i++) 
+                <tr>
+                    <td scope="row">{{$i}}</td>
+                    <td style="text-align:left">
+                    <a href = "/{{$site->id}}">
+                       {{$site->name}}
+                        </a>
+                        </td>
+                    <td class="no-wrap-in-table">{{$site->node->data->where('date', date('Y-m-d'))->first()->capacity}}</td>
+                    <td>{{$site->node->data->where('date', date('Y-m-d'))->first()->channel_count}}</td>
+                    <td>{{$site->node->data->where('date', date('Y-m-d'))->first()->rank_capacity}}</td>
+                    <td>{{$site->node->data->where('date', date('Y-m-d'))->first()->rank_channel}}</td>
+                    <td>{{$site->node->data->where('date', date('Y-m-d'))->first()->rank_age}}</td>
                     
-                <div class="page-footer">
-                    <p>2019 &copy; stacks</p>
-                </div>
-                </div><!-- /Page Inner -->
-             
-               
-            </div><!-- /Page Content -->
-        </div><!-- /Page Container -->
-        
-        
-        <!-- Javascripts -->
-        <script src="../../assets/plugins/jquery/jquery-3.1.0.min.js"></script>
-        <script src="../../assets/plugins/bootstrap/popper.min.js"></script>
-        <script src="../../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-        <script src="../../assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-        <script src="../../assets/plugins/switchery/switchery.min.js"></script>
-        <script src="../../assets/js/concept.min.js"></script>
-    </body>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+</body>
+
 </html>
