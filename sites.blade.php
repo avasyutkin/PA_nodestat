@@ -35,12 +35,12 @@
             <thead>
                <hr class="hr-visible0">
                 <tr style="font-size: 19px;">
-                    <th style="width: 12%; text-align:left" class="head-table">Site name</th>
-                    <th style="width: 14%" title="А вот и я!" class="head-table">Capacity</th>
-                    <th style="width: 14%" title="А вот и я!" class="head-table no-wrap-in-table">Channel Count</th>
-                    <th style="width: 11%" title="А вот и я!" class="head-table">Rank: Capacity</th>
-                    <th style="width: 11%" title="А вот и я!" class="head-table">Rank: Channel</th>
-                    <th style="width: 11%" title="А вот и я!" class="head-table">Rank: Age</th>
+                    <th style="width: 12%; text-align:left" class="head-table">site name</th>
+                    <th style="width: 14%" title="А вот и я!" class="head-table">capacity</th>
+                    <th style="width: 14%" title="А вот и я!" class="head-table no-wrap-in-table">channel Count</th>
+                    <th style="width: 11%" title="А вот и я!" class="head-table">rank: Capacity</th>
+                    <th style="width: 11%" title="А вот и я!" class="head-table">rank: Channel</th>
+                    <th style="width: 11%" title="А вот и я!" class="head-table">rank: Age</th>
                 </tr>
             </thead>
               <tbody>
