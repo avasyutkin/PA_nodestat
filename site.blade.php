@@ -8,6 +8,9 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('resources/css/style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;300;400;500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
 </head>
 <body>
     <div class="container">
@@ -25,26 +28,63 @@
             <div class="description-pers-page">
                 {{$site->description}}
             </div>
-            <div class="capacity-pers-page">
-                capacity: {{$site->node->data->where('date', date('Y-m-d'))->first()->capacity}}
+            <div class="capacity-pers-page" title="today the turnover of node is {{$site->node->data->where('date', date('Y-m-d', strtotime('-1 days')))->first()->capacity}} BTC">
+                capacity: {{$site->node->data->where('date', date('Y-m-d', strtotime("-1 days")))->first()->capacity}} BTC
             </div>
-            <div class="channelcount-pers-page">
-                channel count: {{$site->node->data->where('date', date('Y-m-d'))->first()->channel_count}}
+            <div class="channelcount-pers-page" title="today the number of channels associated with node is {{$site->node->data->where('date', date('Y-m-d', strtotime('-1 days')))->first()->channel_count}}">
+                channel count: {{$site->node->data->where('date', date('Y-m-d', strtotime("-1 days")))->first()->channel_count}}
             </div>
-            <div class="rankcapacity-pers-page">
-                rank capacity: {{$site->node->data->where('date', date('Y-m-d'))->first()->rank_capacity}}
+            <div class="rankcapacity-pers-page" title="today node takes {{$site->node->data->where('date', date('Y-m-d', strtotime('-1 days')))->first()->rank_capacity}} place in the rating of 1ml.com by the current capacity value (from the maximum)">
+                rank capacity: {{$site->node->data->where('date', date('Y-m-d', strtotime("-1 days")))->first()->rank_capacity}}
             </div>
-            <div class="rankchannel-pers-page">
-                rank channel: {{$site->node->data->where('date', date('Y-m-d'))->first()->rank_channel}}
+            <div class="rankchannel-pers-page" title="today node takes {{$site->node->data->where('date', date('Y-m-d', strtotime('-1 days')))->first()->rank_channel}} place in the 1ml rating by current channel count value (from maximum)">
+                rank channel: {{$site->node->data->where('date', date('Y-m-d', strtotime("-1 days")))->first()->rank_channel}}
             </div>
-            <div class="rankage-pers-page">
-                rank age: {{$site->node->data->where('date', date('Y-m-d'))->first()->rank_age}}
+            <div class="rankage-pers-page" title="today a node takes {{$site->node->data->where('date', date('Y-m-d', strtotime('-1 days')))->first()->rank_age}} place in the node age list by 1ml (since its inception)">
+                rank age: {{$site->node->data->where('date', date('Y-m-d', strtotime("-1 days")))->first()->rank_age}}
             </div>
             </div>
             <div>
             </div>
     </div>
-
+    
+    
+<div class="container">
+    <canvas id="myChart"> 
+    </canvas>
+</div>
+    
+<script>
+    let myChart = document.getElementById('myChart').getContext('2d');
+    
+    let massPopChart = new Chart(myChart, {
+        type: 'line', 
+        data: {
+            labels: ['{{$site->node->data->where("date", date("Y-m-d", strtotime("-3 days")))->first()->date}}',
+                    '{{$site->node->data->where("date", date("Y-m-d", strtotime("-3 days")))->first()->date}}',
+                    '{{$site->node->data->where("date", date("Y-m-d", strtotime("-3 days")))->first()->date}}',
+                    '{{$site->node->data->where("date", date("Y-m-d", strtotime("-3 days")))->first()->date}}',
+                    '{{$site->node->data->where("date", date("Y-m-d", strtotime("-3 days")))->first()->date}}',
+                    '{{$site->node->data->where("date", date("Y-m-d", strtotime("-2 days")))->first()->date}}',
+                    '{{$site->node->data->where("date", date("Y-m-d", strtotime("-1 days")))->first()->date}}'],
+            datasets: [{
+                label: 'capacity — week',
+                data: [{{$site->node->data->where('date', date('Y-m-d', strtotime("-3 days")))->first()->capacity}},
+                      {{$site->node->data->where('date', date('Y-m-d', strtotime("-3 days")))->first()->capacity}},
+                      {{$site->node->data->where('date', date('Y-m-d', strtotime("-3 days")))->first()->capacity}},
+                      {{$site->node->data->where('date', date('Y-m-d', strtotime("-3 days")))->first()->capacity}},
+                      {{$site->node->data->where('date', date('Y-m-d', strtotime("-3 days")))->first()->capacity}},
+                      {{$site->node->data->where('date', date('Y-m-d', strtotime("-2 days")))->first()->capacity}},
+                      {{$site->node->data->where('date', date('Y-m-d', strtotime("-1 days")))->first()->capacity}}  ],
+                backgroundColor: "#fff",
+                borderColor: "#000",
+                hoverBorderWidth: 2,
+            }],
+        },
+        options: {}
+    });
+    
+</script>
 </body>
 
 </html>
