@@ -37,10 +37,10 @@
                 <tr style="font-size: 19px;">
                     <th style="width: 12%; text-align:left" class="head-table">site name</th>
                     <th style="width: 14%" title="how much is invested in the channel, what is the turnover of BTC in it" class="head-table">capacity</th>
-                    <th style="width: 14%" title="number of channels associated with the node" class="head-table no-wrap-in-table">channel Count</th>
-                    <th style="width: 11%" title="place in the general list on the site 1ml.com, starting from 1, at the current capacity value (from the maximum)" class="head-table">rank: Capacity</th>
-                    <th style="width: 11%" title="place in the general list on the site 1ml.com, starting from 1, at the current channel Count value (from the maximum)" class="head-table">rank: Channel</th>
-                    <th style="width: 11%" title="place in the general list on the site 1ml.com, starting from 1, by node age (since its creation)" class="head-table">rank: Age</th>
+                    <th style="width: 14%" title="number of channels associated with the node" class="head-table no-wrap-in-table">channel сount</th>
+                    <th style="width: 11%" title="place in the general list on the site 1ml.com, starting from 1, at the current capacity value (from the maximum)" class="head-table">rank сapacity</th>
+                    <th style="width: 11%" title="place in the general list on the site 1ml.com, starting from 1, at the current channel Count value (from the maximum)" class="head-table">rank сhannel</th>
+                    <th style="width: 11%" title="place in the general list on the site 1ml.com, starting from 1, by node age (since its creation)" class="head-table">rank age</th>
                 </tr>
             </thead>
               <tbody>
