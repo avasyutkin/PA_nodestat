@@ -28,52 +28,70 @@
             <div class="description-pers-page">
                 {{$site->description}}
             </div>
-            <div class="capacity-pers-page" title="today the turnover of node is {{$site->node->data->where('date', date('Y-m-d', strtotime('-1 days')))->first()->capacity}} BTC">
-                capacity: {{$site->node->data->where('date', date('Y-m-d'))->first()->capacity}} BTC
-            </div>
-            <div class="channelcount-pers-page" title="today the number of channels associated with node is {{$site->node->data->where('date', date('Y-m-d', strtotime('-1 days')))->first()->channel_count}}">
-                channel count: {{$site->node->data->where('date', date('Y-m-d'))->first()->channel_count}}
-            </div>
-            <div class="rankcapacity-pers-page" title="today node takes {{$site->node->data->where('date', date('Y-m-d', strtotime('-1 days')))->first()->rank_capacity}} place in the rating of 1ml.com by the current capacity value (from the maximum)">
-                rank capacity: {{$site->node->data->where('date', date('Y-m-d'))->first()->rank_capacity}}
-            </div>
-            <div class="rankchannel-pers-page" title="today node takes {{$site->node->data->where('date', date('Y-m-d', strtotime('-1 days')))->first()->rank_channel}} place in the 1ml rating by current channel count value (from maximum)">
-                rank channel: {{$site->node->data->where('date', date('Y-m-d'))->first()->rank_channel}}
-            </div>
-            <div class="rankage-pers-page" title="today a node takes {{$site->node->data->where('date', date('Y-m-d', strtotime('-1 days')))->first()->rank_age}} place in the node age list by 1ml (since its inception)">
-                rank age: {{$site->node->data->where('date', date('Y-m-d'))->first()->rank_age}}
-            </div>
+            @if($site->node->data->where('date', date('Y-m-d'))->first())
+                <div class="capacity-pers-page" title="today the turnover of node is {{$site->node->data->where('date', date('Y-m-d', strtotime('-1 days')))->first()->capacity}} BTC">
+                    capacity: {{$site->node->data->where('date', date('Y-m-d'))->first()->capacity}} BTC
+                </div>
+                <div class="channelcount-pers-page" title="today the number of channels associated with node is {{$site->node->data->where('date', date('Y-m-d', strtotime('-1 days')))->first()->channel_count}}">
+                    channel count: {{$site->node->data->where('date', date('Y-m-d'))->first()->channel_count}}
+                </div>
+                <div class="rankcapacity-pers-page" title="today node takes {{$site->node->data->where('date', date('Y-m-d', strtotime('-1 days')))->first()->rank_capacity}} place in the rating of 1ml.com by the current capacity value (from the maximum)">
+                    rank capacity: {{$site->node->data->where('date', date('Y-m-d'))->first()->rank_capacity}}
+                </div>
+                <div class="rankchannel-pers-page" title="today node takes {{$site->node->data->where('date', date('Y-m-d', strtotime('-1 days')))->first()->rank_channel}} place in the 1ml rating by current channel count value (from maximum)">
+                    rank channel: {{$site->node->data->where('date', date('Y-m-d'))->first()->rank_channel}}
+                </div>
+                <div class="rankage-pers-page" title="today a node takes {{$site->node->data->where('date', date('Y-m-d', strtotime('-1 days')))->first()->rank_age}} place in the node age list by 1ml (since its inception)">
+                    rank age: {{$site->node->data->where('date', date('Y-m-d'))->first()->rank_age}}
+                </div>
+            @elseif($site->node->data->where('date', date('Y-m-d', strtotime("-1 days"))))
+                <div class="capacity-pers-page" title="today the turnover of node is {{$site->node->data->where('date', date('Y-m-d', strtotime('-1 days')))->first()->capacity}} BTC">
+                    capacity: {{$site->node->data->where('date', date('Y-m-d', strtotime("-1 days")))->first()->capacity}} BTC
+                </div>
+                <div class="channelcount-pers-page" title="today the number of channels associated with node is {{$site->node->data->where('date', date('Y-m-d', strtotime('-1 days')))->first()->channel_count}}">
+                    channel count: {{$site->node->data->where('date', date('Y-m-d', strtotime("-1 days")))->first()->channel_count}}
+                </div>
+                <div class="rankcapacity-pers-page" title="today node takes {{$site->node->data->where('date', date('Y-m-d', strtotime('-1 days')))->first()->rank_capacity}} place in the rating of 1ml.com by the current capacity value (from the maximum)">
+                    rank capacity: {{$site->node->data->where('date', date('Y-m-d', strtotime("-1 days")))->first()->rank_capacity}}
+                </div>
+                <div class="rankchannel-pers-page" title="today node takes {{$site->node->data->where('date', date('Y-m-d', strtotime('-1 days')))->first()->rank_channel}} place in the 1ml rating by current channel count value (from maximum)">
+                    rank channel: {{$site->node->data->where('date', date('Y-m-d', strtotime("-1 days")))->first()->rank_channel}}
+                </div>
+                <div class="rankage-pers-page" title="today a node takes {{$site->node->data->where('date', date('Y-m-d', strtotime('-1 days')))->first()->rank_age}} place in the node age list by 1ml (since its inception)">
+                    rank age: {{$site->node->data->where('date', date('Y-m-d', strtotime("-1 days")))->first()->rank_age}}
+                </div>
+            @endif
         </div>
     </div>
-       
-    <div class="container">
-       <div class="text-for-parameters">
-            weekly capacity change schedule    
+           
+        <div class="container">
+           <div class="text-for-parameters">
+                weekly capacity change schedule    
+            </div>
+            <canvas id="graph_capacity_week"> 
+            </canvas>
         </div>
-        <canvas id="graph_capacity_week"> 
-        </canvas>
-    </div>
-    <div class="container">
-       <div class="text-for-parameters">
-           weekly channel count change schedule
+        <div class="container">
+           <div class="text-for-parameters">
+               weekly channel count change schedule
+            </div>
+            <canvas id="graph_channelcount_week"> 
+            </canvas>
         </div>
-        <canvas id="graph_channelcount_week"> 
-        </canvas>
-    </div>
-    <div class="container">
-        <div class="text-for-parameters">
-           monthly capacity change schedule
+        <div class="container">
+            <div class="text-for-parameters">
+               monthly capacity change schedule
+            </div>
+            <canvas id="graph_capacity_month"> 
+            </canvas>
         </div>
-        <canvas id="graph_capacity_month"> 
-        </canvas>
-    </div>
-    <div class="container">
-        <div class="text-for-parameters">
-            monthly channel count change schedule
+        <div class="container">
+            <div class="text-for-parameters">
+                monthly channel count change schedule
+            </div>
+            <canvas id="graph_channelcount_month"> 
+            </canvas>
         </div>
-        <canvas id="graph_channelcount_month"> 
-        </canvas>
-    </div>
 
 
 <div class="container container-for-contacts">
@@ -103,27 +121,24 @@
 </div>
 
 
-
-
-
 <script>
     let capacity_week = document.getElementById('graph_capacity_week').getContext('2d');
     
     let capacity_week_arr = new Chart(capacity_week, {
         type: 'line', 
-        data: {
-            labels: ['{{$site->node->data->where("date", date("Y-m-d", strtotime("-3 days")))->first()->date}}',
-                    '{{$site->node->data->where("date", date("Y-m-d", strtotime("-3 days")))->first()->date}}',
-                    '{{$site->node->data->where("date", date("Y-m-d", strtotime("-3 days")))->first()->date}}',
+        data: { 
+            labels: ['{{$site->node->data->where("date", date("Y-m-d", strtotime("-4 days")))->first()->date}}',
+                    '{{$site->node->data->where("date", date("Y-m-d", strtotime("-4 days")))->first()->date}}',
+                    '{{$site->node->data->where("date", date("Y-m-d", strtotime("-4 days")))->first()->date}}',
                     '{{$site->node->data->where("date", date("Y-m-d", strtotime("-3 days")))->first()->date}}',
                     '{{$site->node->data->where("date", date("Y-m-d", strtotime("-2 days")))->first()->date}}',
                     '{{$site->node->data->where("date", date("Y-m-d", strtotime("-1 days")))->first()->date}}',
                     '{{$site->node->data->where("date", date("Y-m-d"))->first()->date}}'],
             datasets: [{
                 label: 'capacity — week',
-                data: [{{$site->node->data->where('date', date('Y-m-d', strtotime("-3 days")))->first()->capacity}},
-                      {{$site->node->data->where('date', date('Y-m-d', strtotime("-3 days")))->first()->capacity}},
-                      {{$site->node->data->where('date', date('Y-m-d', strtotime("-3 days")))->first()->capacity}},
+                data: [{{$site->node->data->where('date', date('Y-m-d', strtotime("-4 days")))->first()->capacity}},
+                      {{$site->node->data->where('date', date('Y-m-d', strtotime("-4 days")))->first()->capacity}},
+                      {{$site->node->data->where('date', date('Y-m-d', strtotime("-4 days")))->first()->capacity}},
                       {{$site->node->data->where('date', date('Y-m-d', strtotime("-3 days")))->first()->capacity}},
                       {{$site->node->data->where('date', date('Y-m-d', strtotime("-2 days")))->first()->capacity}},
                       {{$site->node->data->where('date', date('Y-m-d', strtotime("-1 days")))->first()->capacity}},
@@ -143,18 +158,18 @@
     let channelcount_week_arr = new Chart(channelcount_week, {
         type: 'line', 
         data: {
-            labels: ['{{$site->node->data->where("date", date("Y-m-d", strtotime("-3 days")))->first()->date}}',
-                    '{{$site->node->data->where("date", date("Y-m-d", strtotime("-3 days")))->first()->date}}',
-                    '{{$site->node->data->where("date", date("Y-m-d", strtotime("-3 days")))->first()->date}}',
+            labels: ['{{$site->node->data->where("date", date("Y-m-d", strtotime("-4 days")))->first()->date}}',
+                    '{{$site->node->data->where("date", date("Y-m-d", strtotime("-4 days")))->first()->date}}',
+                    '{{$site->node->data->where("date", date("Y-m-d", strtotime("-4 days")))->first()->date}}',
                     '{{$site->node->data->where("date", date("Y-m-d", strtotime("-3 days")))->first()->date}}',
                     '{{$site->node->data->where("date", date("Y-m-d", strtotime("-2 days")))->first()->date}}',
                     '{{$site->node->data->where("date", date("Y-m-d", strtotime("-1 days")))->first()->date}}',
                     '{{$site->node->data->where("date", date("Y-m-d"))->first()->date}}'],
             datasets: [{
                 label: 'channel count — week',
-                data: [{{$site->node->data->where('date', date('Y-m-d', strtotime("-3 days")))->first()->channel_count}},
-                      {{$site->node->data->where('date', date('Y-m-d', strtotime("-3 days")))->first()->channel_count}},
-                      {{$site->node->data->where('date', date('Y-m-d', strtotime("-3 days")))->first()->channel_count}},
+                data: [{{$site->node->data->where('date', date('Y-m-d', strtotime("-4 days")))->first()->channel_count}},
+                      {{$site->node->data->where('date', date('Y-m-d', strtotime("-4 days")))->first()->channel_count}},
+                      {{$site->node->data->where('date', date('Y-m-d', strtotime("-4 days")))->first()->channel_count}},
                       {{$site->node->data->where('date', date('Y-m-d', strtotime("-3 days")))->first()->channel_count}},
                       {{$site->node->data->where('date', date('Y-m-d', strtotime("-2 days")))->first()->channel_count}},
                       {{$site->node->data->where('date', date('Y-m-d', strtotime("-1 days")))->first()->channel_count}},
@@ -167,6 +182,7 @@
         options: {}
     });    
 </script>
+
 
 <!-- место для скриптов -->
 

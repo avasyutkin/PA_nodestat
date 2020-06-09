@@ -52,11 +52,19 @@
                        {{$site->name}}
                         </a>
                         </td>
-                    <td class="no-wrap-in-table">{{$site->node->data->where('date', date('Y-m-d'))->first()->capacity}} BTC</td>
-                    <td>{{$site->node->data->where('date', date('Y-m-d'))->first()->channel_count}}</td>
-                    <td>{{$site->node->data->where('date', date('Y-m-d'))->first()->rank_capacity}}</td>
-                    <td>{{$site->node->data->where('date', date('Y-m-d'))->first()->rank_channel}}</td>
-                    <td>{{$site->node->data->where('date', date('Y-m-d'))->first()->rank_age}}</td>
+                        @if($site->node->data->where('date', date('Y-m-d'))->first())
+                            <td class="no-wrap-in-table">{{$site->node->data->where('date', date('Y-m-d'))->first()->capacity}} BTC</td>
+                            <td>{{$site->node->data->where('date', date('Y-m-d'))->first()->channel_count}}</td>
+                            <td>{{$site->node->data->where('date', date('Y-m-d'))->first()->rank_capacity}}</td>
+                            <td>{{$site->node->data->where('date', date('Y-m-d'))->first()->rank_channel}}</td>
+                            <td>{{$site->node->data->where('date', date('Y-m-d'))->first()->rank_age}}</td>
+                        @elseif($site->node->data->where('date', date('Y-m-d', strtotime("-1 days"))))                        
+                            <td class="no-wrap-in-table">{{$site->node->data->where('date', date('Y-m-d', strtotime("-1 days")))->first()->capacity}} BTC</td>
+                            <td>{{$site->node->data->where('date', date('Y-m-d', strtotime("-1 days")))->first()->channel_count}}</td>
+                            <td>{{$site->node->data->where('date', date('Y-m-d', strtotime("-1 days")))->first()->rank_capacity}}</td>
+                            <td>{{$site->node->data->where('date', date('Y-m-d',strtotime("-1 days")))->first()->rank_channel}}</td>
+                            <td>{{$site->node->data->where('date', date('Y-m-d', strtotime("-1 days")))->first()->rank_age}}</td>
+                        @endif
                 </tr>
                 @endforeach
             </tbody>
