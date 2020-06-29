@@ -183,6 +183,149 @@
     });    
 </script>
 
+<script>
+    let capacity_month = document.getElementById('graph_capacity_month').getContext('2d');
+    
+    let capacity_month_arr = new Chart(capacity_month, {
+        type: 'line', 
+        data: {
+            labels: [
+                     
+                     
+                    
+                     '{{$site->node->data->where("date", date("Y-m-d", strtotime("-25 days, -3 hours")))->first()->date}}',
+                     '{{$site->node->data->where("date", date("Y-m-d", strtotime("-24 days, -3 hours")))->first()->date}}',
+                     '{{$site->node->data->where("date", date("Y-m-d", strtotime("-23 days, -3 hours")))->first()->date}}',
+                     '{{$site->node->data->where("date", date("Y-m-d", strtotime("-22 days, -3 hours")))->first()->date}}',
+                     '{{$site->node->data->where("date", date("Y-m-d", strtotime("-21 days, -3 hours")))->first()->date}}',
+                     '{{$site->node->data->where("date", date("Y-m-d", strtotime("-20 days, -3 hours")))->first()->date}}',
+                     '{{$site->node->data->where("date", date("Y-m-d", strtotime("-19 days, -3 hours")))->first()->date}}',
+                     '{{$site->node->data->where("date", date("Y-m-d", strtotime("-18 days, -3 hours")))->first()->date}}',
+                     '{{$site->node->data->where("date", date("Y-m-d", strtotime("-17 days, -3 hours")))->first()->date}}',
+                     '{{$site->node->data->where("date", date("Y-m-d", strtotime("-16 days, -3 hours")))->first()->date}}',
+                     '{{$site->node->data->where("date", date("Y-m-d", strtotime("-15 days, -3 hours")))->first()->date}}',
+                     '{{$site->node->data->where("date", date("Y-m-d", strtotime("-14 days, -3 hours")))->first()->date}}',
+                     '{{$site->node->data->where("date", date("Y-m-d", strtotime("-13 days, -3 hours")))->first()->date}}',
+                     '{{$site->node->data->where("date", date("Y-m-d", strtotime("-12 days, -3 hours")))->first()->date}}',
+                     '{{$site->node->data->where("date", date("Y-m-d", strtotime("-11 days, -3 hours")))->first()->date}}',
+                     '{{$site->node->data->where("date", date("Y-m-d", strtotime("-10 days, -3 hours")))->first()->date}}',
+                     '{{$site->node->data->where("date", date("Y-m-d", strtotime("-9 days, -3 hours")))->first()->date}}',
+                     '{{$site->node->data->where("date", date("Y-m-d", strtotime("-8 days, -3 hours")))->first()->date}}',
+                     '{{$site->node->data->where("date", date("Y-m-d", strtotime("-7 days, -3 hours")))->first()->date}}',
+                     '{{$site->node->data->where("date", date("Y-m-d", strtotime("-6 days, -3 hours")))->first()->date}}',
+                     '{{$site->node->data->where("date", date("Y-m-d", strtotime("-5 days, -3 hours")))->first()->date}}',
+                     '{{$site->node->data->where("date", date("Y-m-d", strtotime("-4 days, -3 hours")))->first()->date}}',
+                     '{{$site->node->data->where("date", date("Y-m-d", strtotime("-3 days, -3 hours")))->first()->date}}',
+                     '{{$site->node->data->where("date", date("Y-m-d", strtotime("-2 days, -3 hours")))->first()->date}}',
+                     '{{$site->node->data->where("date", date("Y-m-d", strtotime("-1 days, -3 hours")))->first()->date}}',
+                     '{{$site->node->data->where("date", date("Y-m-d", strtotime("-3 hours")))->first()->date}}'],
+            datasets: [{
+                label: 'channel count — month',
+                data: [
+                       {{$site->node->data->where('date', date('Y-m-d', strtotime("-25 days, -3 hours")))->first()->capacity}},
+                       {{$site->node->data->where('date', date('Y-m-d', strtotime("-24 days, -3 hours")))->first()->capacity}},
+                       {{$site->node->data->where('date', date('Y-m-d', strtotime("-23 days, -3 hours")))->first()->capacity}},
+                       {{$site->node->data->where('date', date('Y-m-d', strtotime("-22 days, -3 hours")))->first()->capacity}},
+                       {{$site->node->data->where('date', date('Y-m-d', strtotime("-21 days, -3 hours")))->first()->capacity}},
+                       {{$site->node->data->where('date', date('Y-m-d', strtotime("-20 days, -3 hours")))->first()->capacity}},
+                       {{$site->node->data->where('date', date('Y-m-d', strtotime("-19 days, -3 hours")))->first()->capacity}},
+                       {{$site->node->data->where('date', date('Y-m-d', strtotime("-18 days, -3 hours")))->first()->capacity}},
+                       {{$site->node->data->where('date', date('Y-m-d', strtotime("-17 days, -3 hours")))->first()->capacity}},
+                       {{$site->node->data->where('date', date('Y-m-d', strtotime("-16 days, -3 hours")))->first()->capacity}},
+                       {{$site->node->data->where('date', date('Y-m-d', strtotime("-15 days, -3 hours")))->first()->capacity}},
+                       {{$site->node->data->where('date', date('Y-m-d', strtotime("-14 days, -3 hours")))->first()->capacity}},
+                       {{$site->node->data->where('date', date('Y-m-d', strtotime("-13 days, -3 hours")))->first()->capacity}},
+                       {{$site->node->data->where('date', date('Y-m-d', strtotime("-12 days, -3 hours")))->first()->capacity}},
+                       {{$site->node->data->where('date', date('Y-m-d', strtotime("-11 days, -3 hours")))->first()->capacity}},
+                       {{$site->node->data->where('date', date('Y-m-d', strtotime("-10 days, -3 hours")))->first()->capacity}},
+                       {{$site->node->data->where('date', date('Y-m-d', strtotime("-9 days, -3 hours")))->first()->capacity}},
+                       {{$site->node->data->where('date', date('Y-m-d', strtotime("-8 days, -3 hours")))->first()->capacity}},
+                       {{$site->node->data->where('date', date('Y-m-d', strtotime("-7 days, -3 hours")))->first()->capacity}},
+                       {{$site->node->data->where('date', date('Y-m-d', strtotime("-6 days, -3 hours")))->first()->capacity}},
+                       {{$site->node->data->where('date', date('Y-m-d', strtotime("-5 days, -3 hours")))->first()->capacity}},
+                       {{$site->node->data->where('date', date('Y-m-d', strtotime("-4 days, -3 hours")))->first()->capacity}},
+                       {{$site->node->data->where('date', date('Y-m-d', strtotime("-2 days, -3 hours")))->first()->capacity}},
+                       {{$site->node->data->where('date', date('Y-m-d', strtotime("-1 days, -3 hours")))->first()->capacity}},
+                      {{$site->node->data->where('date', date('Y-m-d', strtotime("-3 hours")))->first()->capacity}}],
+                backgroundColor: "#fff",
+                borderColor: "#000",
+                hoverBorderWidth: 2,
+            }],
+        },
+        options: {}
+    });
+</script>
+
+<script>
+    let channelcount_month = document.getElementById('graph_channelcount_month').getContext('2d');
+    
+    let channelcount_month_arr = new Chart(channelcount_month, {
+        type: 'line', 
+        data: {
+            labels: [
+                     '{{$site->node->data->where("date", date("Y-m-d", strtotime("-25 days, -3 hours")))->first()->date}}',
+                     '{{$site->node->data->where("date", date("Y-m-d", strtotime("-24 days, -3 hours")))->first()->date}}',
+                     '{{$site->node->data->where("date", date("Y-m-d", strtotime("-23 days, -3 hours")))->first()->date}}',
+                     '{{$site->node->data->where("date", date("Y-m-d", strtotime("-22 days, -3 hours")))->first()->date}}',
+                     '{{$site->node->data->where("date", date("Y-m-d", strtotime("-21 days, -3 hours")))->first()->date}}',
+                     '{{$site->node->data->where("date", date("Y-m-d", strtotime("-20 days, -3 hours")))->first()->date}}',
+                     '{{$site->node->data->where("date", date("Y-m-d", strtotime("-19 days, -3 hours")))->first()->date}}',
+                     '{{$site->node->data->where("date", date("Y-m-d", strtotime("-18 days, -3 hours")))->first()->date}}',
+                     '{{$site->node->data->where("date", date("Y-m-d", strtotime("-17 days, -3 hours")))->first()->date}}',
+                     '{{$site->node->data->where("date", date("Y-m-d", strtotime("-16 days, -3 hours")))->first()->date}}',
+                     '{{$site->node->data->where("date", date("Y-m-d", strtotime("-15 days, -3 hours")))->first()->date}}',
+                     '{{$site->node->data->where("date", date("Y-m-d", strtotime("-14 days, -3 hours")))->first()->date}}',
+                     '{{$site->node->data->where("date", date("Y-m-d", strtotime("-13 days, -3 hours")))->first()->date}}',
+                     '{{$site->node->data->where("date", date("Y-m-d", strtotime("-12 days, -3 hours")))->first()->date}}',
+                     '{{$site->node->data->where("date", date("Y-m-d", strtotime("-11 days, -3 hours")))->first()->date}}',
+                     '{{$site->node->data->where("date", date("Y-m-d", strtotime("-10 days, -3 hours")))->first()->date}}',
+                     '{{$site->node->data->where("date", date("Y-m-d", strtotime("-9 days, -3 hours")))->first()->date}}',
+                     '{{$site->node->data->where("date", date("Y-m-d", strtotime("-8 days, -3 hours")))->first()->date}}',
+                     '{{$site->node->data->where("date", date("Y-m-d", strtotime("-7 days, -3 hours")))->first()->date}}',
+                     '{{$site->node->data->where("date", date("Y-m-d", strtotime("-6 days, -3 hours")))->first()->date}}',
+                     '{{$site->node->data->where("date", date("Y-m-d", strtotime("-5 days, -3 hours")))->first()->date}}',
+                     '{{$site->node->data->where("date", date("Y-m-d", strtotime("-4 days, -3 hours")))->first()->date}}',
+                     '{{$site->node->data->where("date", date("Y-m-d", strtotime("-3 days, -3 hours")))->first()->date}}',
+                     '{{$site->node->data->where("date", date("Y-m-d", strtotime("-2 days, -3 hours")))->first()->date}}',
+                     '{{$site->node->data->where("date", date("Y-m-d", strtotime("-1 days, -3 hours")))->first()->date}}',
+                     '{{$site->node->data->where("date", date("Y-m-d", strtotime("-3 hours")))->first()->date}}'],
+            datasets: [{
+                label: 'channel count — month',
+                data: [
+                       {{$site->node->data->where('date', date('Y-m-d', strtotime("-25 days, -3 hours")))->first()->channel_count}},
+                       {{$site->node->data->where('date', date('Y-m-d', strtotime("-24 days, -3 hours")))->first()->channel_count}},
+                       {{$site->node->data->where('date', date('Y-m-d', strtotime("-23 days, -3 hours")))->first()->channel_count}},
+                       {{$site->node->data->where('date', date('Y-m-d', strtotime("-22 days, -3 hours")))->first()->channel_count}},
+                       {{$site->node->data->where('date', date('Y-m-d', strtotime("-21 days, -3 hours")))->first()->channel_count}},
+                       {{$site->node->data->where('date', date('Y-m-d', strtotime("-20 days, -3 hours")))->first()->channel_count}},
+                       {{$site->node->data->where('date', date('Y-m-d', strtotime("-19 days, -3 hours")))->first()->channel_count}},
+                       {{$site->node->data->where('date', date('Y-m-d', strtotime("-18 days, -3 hours")))->first()->channel_count}},
+                       {{$site->node->data->where('date', date('Y-m-d', strtotime("-17 days, -3 hours")))->first()->channel_count}},
+                       {{$site->node->data->where('date', date('Y-m-d', strtotime("-16 days, -3 hours")))->first()->channel_count}},
+                       {{$site->node->data->where('date', date('Y-m-d', strtotime("-15 days, -3 hours")))->first()->channel_count}},
+                       {{$site->node->data->where('date', date('Y-m-d', strtotime("-14 days, -3 hours")))->first()->channel_count}},
+                       {{$site->node->data->where('date', date('Y-m-d', strtotime("-13 days, -3 hours")))->first()->channel_count}},
+                       {{$site->node->data->where('date', date('Y-m-d', strtotime("-12 days, -3 hours")))->first()->channel_count}},
+                       {{$site->node->data->where('date', date('Y-m-d', strtotime("-11 days, -3 hours")))->first()->channel_count}},
+                       {{$site->node->data->where('date', date('Y-m-d', strtotime("-10 days, -3 hours")))->first()->channel_count}},
+                       {{$site->node->data->where('date', date('Y-m-d', strtotime("-9 days, -3 hours")))->first()->channel_count}},
+                       {{$site->node->data->where('date', date('Y-m-d', strtotime("-8 days, -3 hours")))->first()->channel_count}},
+                       {{$site->node->data->where('date', date('Y-m-d', strtotime("-7 days, -3 hours")))->first()->channel_count}},
+                       {{$site->node->data->where('date', date('Y-m-d', strtotime("-6 days, -3 hours")))->first()->channel_count}},
+                       {{$site->node->data->where('date', date('Y-m-d', strtotime("-5 days, -3 hours")))->first()->channel_count}},
+                       {{$site->node->data->where('date', date('Y-m-d', strtotime("-4 days, -3 hours")))->first()->channel_count}},
+                       {{$site->node->data->where('date', date('Y-m-d', strtotime("-3 days, -3 hours")))->first()->channel_count}},
+                       {{$site->node->data->where('date', date('Y-m-d', strtotime("-2 days, -3 hours")))->first()->channel_count}},
+                       {{$site->node->data->where('date', date('Y-m-d', strtotime("-1 days, -3 hours")))->first()->channel_count}},
+                      {{$site->node->data->where('date', date('Y-m-d', strtotime("-3 hours")))->first()->channel_count}}],
+                backgroundColor: "#fff",
+                borderColor: "#000",
+                hoverBorderWidth: 2,
+            }],
+        },
+        options: {}
+    });
+</script>
 
 <!-- место для скриптов -->
 
