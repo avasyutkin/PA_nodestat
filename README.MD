@@ -4,6 +4,8 @@ NodeStat - это удобное представление данных о пл
 
 Наш проект: http://nodestat.std-829.ist.mospolytech.ru/
 
+Сайт с часами: http://pd-2020-1.std-829.ist.mospolytech.ru/
+
 ## Участники
 
 | Учебная группа | Имя пользователя | ФИО                      |
