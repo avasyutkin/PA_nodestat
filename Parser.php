@@ -11,7 +11,9 @@ function getContent($link) {
 
     $capacity = $crawler->filterXPath('//div[@class="panel-body"][1]/ul[@class="list-unstyled list-spaced"]/li[1]/span[1]')->text();
     $capacity = substr($capacity, 0, -3);
+    
     $channel_count = $crawler->filterXPath('//div[@class="panel-body"][1]/ul[@class="list-unstyled list-spaced"]/li[2]/span')->text();
+    $channel_count = str_replace(',', '', $channel_count);
     $rank_capacity = $crawler->filterXPath('//div[@class="panel-body nodeRank"]/dl/dd[1]')->text();
     $rank_channel = $crawler->filterXPath('//div[@class="panel-body nodeRank"]/dl/dd[2]')->text();
     $rank_age = $crawler->filterXPath('//div[@class="panel-body nodeRank"]/dl/dd[3]')->text();
